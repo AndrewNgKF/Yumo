@@ -14,6 +14,7 @@
 		6F3952A21D4731AB003BDB03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F3952A01D4731AB003BDB03 /* LaunchScreen.storyboard */; };
 		6F3952AA1D4732EE003BDB03 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3952A91D4732EE003BDB03 /* TutorialPageViewController.swift */; };
 		6F3952D21D47666A003BDB03 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3952D11D47666A003BDB03 /* PageControl.swift */; };
+		6F3952D41D476E3B003BDB03 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3952D31D476E3B003BDB03 /* TutorialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		6F3952A31D4731AB003BDB03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F3952A91D4732EE003BDB03 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		6F3952D11D47666A003BDB03 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		6F3952D31D476E3B003BDB03 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				6F3952971D4731AB003BDB03 /* AppDelegate.swift */,
 				6F3952991D4731AB003BDB03 /* ViewController.swift */,
+				6F3952D31D476E3B003BDB03 /* TutorialViewController.swift */,
 				6F3952A91D4732EE003BDB03 /* TutorialPageViewController.swift */,
 				6F39529B1D4731AB003BDB03 /* Main.storyboard */,
 				6F39529E1D4731AB003BDB03 /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 			files = (
 				6F39529A1D4731AB003BDB03 /* ViewController.swift in Sources */,
 				6F3952981D4731AB003BDB03 /* AppDelegate.swift in Sources */,
+				6F3952D41D476E3B003BDB03 /* TutorialViewController.swift in Sources */,
 				6F3952D21D47666A003BDB03 /* PageControl.swift in Sources */,
 				6F3952AA1D4732EE003BDB03 /* TutorialPageViewController.swift in Sources */,
 			);

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gnq-60-yZr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgX-Sx-Thm">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -35,7 +36,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="gnq-60-yZr" customClass="TutorialPageViewController" customModule="Yumo" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUR-MO-8mF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="715" y="476"/>
+            <point key="canvasLocation" x="663" y="494"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Xp1-sh-oXR">
@@ -84,6 +85,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BTy-vl-V4X" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1432" y="1205"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="aOp-cM-8wU">
+            <objects>
+                <viewController id="AgX-Sx-Thm" customClass="TutorialViewController" customModule="Yumo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G6x-1U-4PE"/>
+                        <viewControllerLayoutGuide type="bottom" id="0rc-lx-DgY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ROE-oG-llL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="eQN-u0-aS7">
+                                <rect key="frame" x="281" y="463" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.83333333333333337" green="0.13321379795957877" blue="0.070723432741286452" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.29172031923921055" green="0.32766898038686609" blue="0.33076923076923082" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zre-AJ-2S9">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="gnq-60-yZr" kind="embed" id="ZQ1-nw-LQO"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0rc-lx-DgY" firstAttribute="top" secondItem="eQN-u0-aS7" secondAttribute="bottom" constant="100" id="BnX-oU-LTs"/>
+                            <constraint firstItem="0rc-lx-DgY" firstAttribute="top" secondItem="zre-AJ-2S9" secondAttribute="bottom" id="KXB-va-7qD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zre-AJ-2S9" secondAttribute="trailing" constant="-20" id="eoo-8x-hNf"/>
+                            <constraint firstItem="zre-AJ-2S9" firstAttribute="leading" secondItem="ROE-oG-llL" secondAttribute="leadingMargin" constant="-20" id="jou-hl-ZeN"/>
+                            <constraint firstItem="zre-AJ-2S9" firstAttribute="top" secondItem="ROE-oG-llL" secondAttribute="topMargin" id="nAf-IE-VXs"/>
+                            <constraint firstItem="eQN-u0-aS7" firstAttribute="centerX" secondItem="ROE-oG-llL" secondAttribute="centerX" id="oUv-EU-WBH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="zre-AJ-2S9" id="z8h-aU-RNA"/>
+                        <outlet property="pageControl" destination="eQN-u0-aS7" id="Yvd-Wn-w2m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DJe-ex-M1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="639" y="-267"/>
         </scene>
     </scenes>
 </document>
