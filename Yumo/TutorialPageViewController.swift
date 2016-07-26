@@ -22,15 +22,10 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerDele
                                animated: true,
                                completion: nil)
         }
+        
+        stylePageControl()
     }
 
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.newColoredViewController("Green"),
@@ -84,9 +79,28 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerDele
     
     
     
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return orderedViewControllers.count
+    }
     
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        guard let firstViewController = viewControllers?.first,
+            firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController) else {
+                return 0
+        }
+        
+        return firstViewControllerIndex
+    }
+    
+    private func stylePageControl() {
+        let pageControl = UIPageControl.appearanceWhenContainedInInstancesOfClasses([self.dynamicType])
+        
+        pageControl.currentPageIndicatorTintColor = UIColor.whiteColor()
+        pageControl.pageIndicatorTintColor = UIColor.blackColor()
+        pageControl.backgroundColor = UIColor.orangeColor()
+    }
 
-
+    
     
 }
 
