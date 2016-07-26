@@ -18,6 +18,7 @@ class TutorialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pageControl.addTarget(self, action: #selector(TutorialViewController.didChangePageControlValue), forControlEvents: .ValueChanged)
         
     }
 
@@ -27,6 +28,20 @@ class TutorialViewController: UIViewController {
             tutorialPageViewController.tutorialDelegate = self
         }
     }
+    
+    //--
+    var tutorialPageViewController: TutorialPageViewController? {
+        didSet {
+            tutorialPageViewController?.tutorialDelegate = self
+        }
+    }
+    
+    func didChangePageControlValue() {
+        tutorialPageViewController?.scrollToViewController(index: pageControl.currentPage)
+    }
+    
+    
+    //--
   
     
 }

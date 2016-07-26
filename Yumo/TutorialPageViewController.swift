@@ -28,20 +28,21 @@ class TutorialPageViewController: UIPageViewController,UIPageViewControllerDataS
         tutorialDelegate?.tutorialPageViewController(self,
                                                      didUpdatePageCount: orderedViewControllers.count)
         
-        stylePageControl()
+//        stylePageControl()
         
     }
 
 
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newColoredViewController("Green"),
-                self.newColoredViewController("Red"),
-                self.newColoredViewController("Blue")]
+        return [self.newPagedViewController("TutPage1"),
+                self.newPagedViewController("TutPage2"),
+                self.newPagedViewController("TutPage3"),
+                self.newPagedViewController("TutPage4")]
     }()
     
-    private func newColoredViewController(color: String) -> UIViewController {
+    private func newPagedViewController(pageNumber: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil) .
-            instantiateViewControllerWithIdentifier("\(color)ViewController")
+            instantiateViewControllerWithIdentifier("\(pageNumber)ViewController")
     }
     
     func pageViewController(pageViewController: UIPageViewController,
@@ -84,30 +85,61 @@ class TutorialPageViewController: UIPageViewController,UIPageViewControllerDataS
         return orderedViewControllers[nextIndex]
     }
     
-    
-    
-    
-    
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return orderedViewControllers.count
-    }
-    
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        guard let firstViewController = viewControllers?.first,
-            firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController) else {
-                return 0
+    //--
+    func scrollToViewController(index newIndex: Int) {
+        if let firstViewController = viewControllers?.first,
+            let currentIndex = orderedViewControllers.indexOf(firstViewController) {
+            let direction: UIPageViewControllerNavigationDirection = newIndex >= currentIndex ? .Forward : .Reverse
+            let nextViewController = orderedViewControllers[newIndex]
+            scrollToViewController(nextViewController, direction: direction)
         }
-        
-        return firstViewControllerIndex
     }
     
-    private func stylePageControl() {
-        let pageControl = UIPageControl.appearanceWhenContainedInInstancesOfClasses([self.dynamicType])
-        
-        pageControl.currentPageIndicatorTintColor = UIColor.init(colorLiteralRed: 1, green: 0, blue: 0, alpha: 1)
-        pageControl.pageIndicatorTintColor = UIColor.blackColor()
-        pageControl.backgroundColor = UIColor.init(colorLiteralRed: 0, green: 0, blue: 1, alpha: 0)
+    private func scrollToViewController(viewController: UIViewController,
+                                        direction: UIPageViewControllerNavigationDirection = .Forward) {
+        setViewControllers([viewController],
+                           direction: direction,
+                           animated: true,
+                           completion: { (finished) -> Void in
+                            // Setting the view controller programmatically does not fire
+                            // any delegate methods, so we have to manually notify the
+                            // 'tutorialDelegate' of the new index.
+                            self.notifyTutorialDelegateOfNewIndex()
+        })
     }
+    
+    private func notifyTutorialDelegateOfNewIndex() {
+        if let firstViewController = viewControllers?.first,
+            let index = orderedViewControllers.indexOf(firstViewController) {
+            tutorialDelegate?.tutorialPageViewController(self,
+                                                         didUpdatePageIndex: index)
+        }
+    }
+    
+    //--
+    
+    
+    
+//    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+//        return orderedViewControllers.count
+//    }
+//    
+//    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+//        guard let firstViewController = viewControllers?.first,
+//            firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController) else {
+//                return 0
+//        }
+//        
+//        return firstViewControllerIndex
+//    }
+//    
+//    private func stylePageControl() {
+//        let pageControl = UIPageControl.appearanceWhenContainedInInstancesOfClasses([self.dynamicType])
+//        
+//        pageControl.currentPageIndicatorTintColor = UIColor.init(colorLiteralRed: 1, green: 0, blue: 0, alpha: 1)
+//        pageControl.pageIndicatorTintColor = UIColor.blackColor()
+//        pageControl.backgroundColor = UIColor.init(colorLiteralRed: 0, green: 0, blue: 1, alpha: 0)
+//    }
 
     
     
